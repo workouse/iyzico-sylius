@@ -1,0 +1,4 @@
+services:
+  eres_sylius_iyzico_plugin.bridge.iyzico:
+    class: Eres\SyliusIyzicoPlugin\Bridge\IyzicoBridge
+    public: true

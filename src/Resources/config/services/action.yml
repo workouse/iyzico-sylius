@@ -1,0 +1,24 @@
+services:
+  eres_sylius_iyzico_plugin.action.capture:
+    class: Eres\SyliusIyzicoPlugin\Action\CaptureAction
+    public: true
+    arguments:
+      - "@eres_sylius_iyzico_plugin.bridge.iyzico"
+      - "@form.factory"
+      - "@request_stack"
+    tags:
+      - { name: payum.action, factory: iyzico, alias: payum.action.capture }
+
+  eres_sylius_iyzico_plugin.action.convert_payment:
+    class: Eres\SyliusIyzicoPlugin\Action\ConvertPaymentAction
+    public: true
+    tags:
+      - { name: payum.action, factory: iyzico, alias: payum.action.convert_payment }
+
+  eres_sylius_iyzico_plugin.action.status:
+    class: Eres\SyliusIyzicoPlugin\Action\StatusAction
+    public: true
+    arguments:
+      - "@eres_sylius_iyzico_plugin.bridge.iyzico"
+    tags:
+      - { name: payum.action, factory: iyzico, alias: payum.action.status }

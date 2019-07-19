@@ -1,0 +1,8 @@
+eres_sylius_iyzico_plugin:
+  ui:
+    environment:
+      not_blank: Environment cannot be blank.
+    api_key:
+      not_blank: Api key cannot be blank.
+    secret_key:
+      not_blank: Secret key cannot be blank

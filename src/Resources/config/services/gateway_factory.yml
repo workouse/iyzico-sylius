@@ -1,0 +1,7 @@
+services:
+  eres_sylius_iyzico_plugin.gateway_factory.iyzico:
+    class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+    arguments:
+      - Eres\SyliusIyzicoPlugin\IyzicoGatewayFactory
+    tags:
+      - { name: payum.gateway_factory_builder, factory: iyzico }

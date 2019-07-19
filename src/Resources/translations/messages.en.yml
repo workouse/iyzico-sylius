@@ -1,0 +1,8 @@
+eres_sylius_iyzico_plugin:
+  ui:
+    api_key: Api key
+    secret_key: Secret key
+    iyzico_gateway_label: Iyzico
+    production: Production
+    sandbox: Sandbox
+    environment: Environment

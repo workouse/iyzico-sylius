@@ -1,13 +1,13 @@
 {
-    "name": "sylius/plugin-skeleton",
+    "name": "EresBiotech/iyzico-sylius",
     "type": "sylius-plugin",
     "keywords": ["sylius", "sylius-plugin"],
-    "description": "Acme example plugin for Sylius.",
+    "description": "Iyzico payment plugin for Sylius applications",
     "license": "MIT",
     "require": {
         "php": "^7.2",
-
-        "sylius/sylius": "^1.4"
+        "sylius/sylius": "^1.4",
+        "iyzico/iyzipay-php": "^2.0"
     },
     "require-dev": {
         "behat/behat": "^3.4",
@@ -44,8 +44,8 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Acme\\SyliusExamplePlugin\\": "src/",
-            "Tests\\Acme\\SyliusExamplePlugin\\": "tests/"
+            "Eres\\SyliusIyzicoPlugin\\": "src/",
+            "Tests\\Eres\\SyliusIyzicoPlugin\\": "tests/"
         }
     },
     "autoload-dev": {
