@@ -1,5 +1,5 @@
 {
-    "name": "EresBiotech/iyzico-sylius",
+    "name": "eresbiotech/iyzico-sylius",
     "type": "sylius-plugin",
     "keywords": ["sylius", "sylius-plugin"],
     "description": "Iyzico payment plugin for Sylius applications",
