@@ -1,0 +1,8 @@
+eres_sylius_iyzico_plugin:
+  ui:
+    environment:
+      not_blank: Çevre değişkenleri boş olamaz.
+    api_key:
+      not_blank: Api anahtar boş olamaz.
+    secret_key:
+      not_blank: Gizli anahtar boş olamaz.

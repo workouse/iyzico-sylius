@@ -1,0 +1,11 @@
+eres_sylius_iyzico_plugin:
+  ui:
+    api_key: Api anahtar
+    secret_key: Gizli anahtar
+    iyzico_gateway_label: Iyzico
+    production: Canlı yayın
+    sandbox: Kum havuzu modu
+    environment: Çevre değişkenleri
+    pay: Öde
+    payment: Ödeme
+    use_the_form_below_to_make_a_payment: Ödeme yapmak için aşağıdaki formu kullanın.

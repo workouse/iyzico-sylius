@@ -1,3 +1,29 @@
-{{ form_start(form) }}
-<button type="submit">{{ 'eres_sylius_iyzico_plugin.ui.send'|trans }}</button>
-{{ form_end(form) }}
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block content %}
+    <div class="ui hidden divider"></div>
+    <div class="ui two column centered stackable grid">
+        <div class="column">
+            <h1 class="ui header">
+                <i class="circular payment icon"></i>
+                <div class="content">
+                    {{ 'eres_sylius_iyzico_plugin.ui.payment'|trans }}
+                    <div class="sub header">{{ 'eres_sylius_iyzico_plugin.ui.use_the_form_below_to_make_a_payment'|trans }}</div>
+                </div>
+            </h1>
+            <div class="ui segment">
+                {{ form_start(form, {'attr': {'class': 'ui large loadable form', 'novalidate': 'novalidate'}}) }}
+                {{ form_row(form.holder) }}
+                {{ form_row(form.number) }}
+                {{ form_row(form.securityCode) }}
+                {{ form_row(form.securityCode) }}
+                {{ form_row(form.expireAt) }}
+                <button type="submit" class="ui fluid large primary submit button">{{ 'eres_sylius_iyzico_plugin.ui.pay'|trans }}</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

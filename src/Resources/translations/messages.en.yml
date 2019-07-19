@@ -6,3 +6,6 @@ eres_sylius_iyzico_plugin:
     production: Production
     sandbox: Sandbox
     environment: Environment
+    pay: Pay
+    payment: Payment
+    use_the_form_below_to_make_a_payment: Use the form below to make a payment.
