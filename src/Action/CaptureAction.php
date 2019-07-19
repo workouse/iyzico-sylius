@@ -91,7 +91,7 @@ final class CaptureAction implements ActionInterface, GatewayAwareInterface, Api
 
         $this->gateway->execute(
             $renderTemplate =
-                new RenderTemplate("EresSyliusIyzicoPlugin::credit_card_form.html.twig", [
+                new RenderTemplate("@EresSyliusIyzicoPlugin\credit_card_form.html.twig", [
                     'form' => $form->createView(),
                 ]));
 
