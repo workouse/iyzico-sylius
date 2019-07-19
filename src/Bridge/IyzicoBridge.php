@@ -88,7 +88,7 @@ final class IyzicoBridge implements IyzicoBridgeInterface
         $paymentCard = new \Iyzipay\Model\PaymentCard();
         $paymentCard->setCardHolderName($card->getHolder());
         $paymentCard->setCardNumber($card->getNumber());
-        $paymentCard->setExpireMonth($card->getExpireAt()->format('w'));
+        $paymentCard->setExpireMonth($card->getExpireAt()->format('m'));
         $paymentCard->setExpireYear($card->getExpireAt()->format('y'));
         $paymentCard->setCvc($card->getSecurityCode());
         $paymentCard->setRegisterCard(0);
