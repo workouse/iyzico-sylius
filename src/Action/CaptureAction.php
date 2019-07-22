@@ -84,7 +84,9 @@ final class CaptureAction implements ActionInterface, GatewayAwareInterface, Api
 
             if ($form->isValid()) {
                 $model['iyzico_card'] = $card;
-                $model['iyzico_status'] = $this->iyzicoBridge->create($model);
+                $payment = $this->iyzicoBridge->create($model);
+                $model['iyzico_status'] = $payment['status'];
+                $model['error_message'] = $payment['error_message'];
                 return;
             }
         }

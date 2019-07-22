@@ -79,7 +79,11 @@ final class IyzicoBridge implements IyzicoBridgeInterface
 
         $payment = \Iyzipay\Model\Payment::create($request, $this->client);
 
-        return $payment->getStatus();
+        return [
+            'status' => $payment->getStatus(),
+            'error_code' => $payment->getErrorCode(),
+            'error_message' => $payment->getErrorMessage()
+        ];
 
     }
 
