@@ -90,8 +90,8 @@ class PayumController
             /** @var FlashBagInterface $flashBag */
             $flashBag = $request->getSession()->getBag('flashes');
 
-            if ($model['error_message']) {
-                $flashBagMessage = $model['error_message'];
+            if (isset($model['iyzico_error_message']) && $model['iyzico_error_message']) {
+                $flashBagMessage = $model['iyzico_error_message'];
             } else {
                 $flashBagMessage = sprintf('sylius.payment.%s', $status->getValue());
             }
