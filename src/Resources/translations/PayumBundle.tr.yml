@@ -1,0 +1,6 @@
+form:
+    credit_card:
+        holder: Kart Üzerindeki İsim
+        expire_at: Son Kullanma Tarihi
+        number: Kart Numarası
+        security_code: Güvenlik (CVC) Kodu
