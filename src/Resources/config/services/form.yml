@@ -1,6 +1,8 @@
 services:
   eres_sylius_iyzico_plugin.form.type.iyzico_gateway_configuration:
     class: Eres\SyliusIyzicoPlugin\Form\Type\IyzicoGatewayConfigurationType
+    arguments:
+      - "@session.flash_bag"
     tags:
       - { name: sylius.gateway_configuration_type, type: iyzico, label: eres_sylius_iyzico_plugin.ui.iyzico_gateway_label }
       - { name: form.type }
