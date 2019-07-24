@@ -9,3 +9,6 @@ eres_sylius_iyzico_plugin:
     pay: Pay
     payment: Payment
     use_the_form_below_to_make_a_payment: Use the form below to make a payment.
+    threeds: 3D Auth
+    active: Active
+    disable: Disable

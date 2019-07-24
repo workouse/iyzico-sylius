@@ -5,4 +5,6 @@ eres_sylius_iyzico_plugin:
     api_key:
       not_blank: Api key cannot be blank.
     secret_key:
-      not_blank: Secret key cannot be blank
+      not_blank: Secret key cannot be blank.
+    threeds:
+      not_blank: 3D Auth cannot be blank.

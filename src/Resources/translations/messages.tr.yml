@@ -9,3 +9,6 @@ eres_sylius_iyzico_plugin:
     pay: Öde
     payment: Ödeme
     use_the_form_below_to_make_a_payment: Ödeme yapmak için aşağıdaki formu kullanın.
+    threeds: 3D Ödeme
+    active: Aktif
+    disable: Devre dışı

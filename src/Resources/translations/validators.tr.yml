@@ -6,3 +6,5 @@ eres_sylius_iyzico_plugin:
       not_blank: Api anahtar boş olamaz.
     secret_key:
       not_blank: Gizli anahtar boş olamaz.
+    threeds:
+      not_blank: 3D Ödeme boş olamaz.

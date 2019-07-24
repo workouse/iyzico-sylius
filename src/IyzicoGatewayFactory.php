@@ -23,7 +23,8 @@ final class IyzicoGatewayFactory extends GatewayFactory
             $config['payum.default_options'] = [
                 'api_key' => null,
                 'secret_key' => null,
-                'environment' => IyzicoBridgeInterface::SANDBOX_ENVIRONMENT
+                'environment' => IyzicoBridgeInterface::SANDBOX_ENVIRONMENT,
+                'threeds' => false,
             ];
 
             $config->defaults($config['payum.default_options']);
@@ -40,6 +41,7 @@ final class IyzicoGatewayFactory extends GatewayFactory
                     'api_key' => $config['api_key'],
                     'secret_key' => $config['secret_key'],
                     'environment' => $config['environment'],
+                    'threeds' => $config['threeds'],
                 ];
             };
         }

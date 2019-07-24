@@ -1,0 +1,10 @@
+eres_sylius_iyzico_plugin:
+  payment:
+    invalid_3d_secure_signature_or_verification: Invalid 3D Secure signature or verification
+    card_holder_or_issuer_not_registered_to_3d_secure_network: Card holder or Issuer not registered to 3D Secure network
+    issuer_is_not_registered_to_3d_secure_network: Issuer is not registered to 3D secure network
+    verification_is_not_possible_card_holder_chosen_to_register_later_on_system: Verification is not possible, card holder chosen to register later on system
+    verification_is_not_possbile: Verification is not possbile
+    3d_secure_error: 3D Secure error
+    system_error: System error
+    unknown_card: Unknown card

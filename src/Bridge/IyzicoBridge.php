@@ -58,8 +58,9 @@ final class IyzicoBridge implements IyzicoBridgeInterface
         $basketItems = array_merge($basketItems, $shipment);
         $orderNumber = $data['iyzico_order_number'];
         $orderId = $data['iyzico_id'];
-        $localCode = explode("_", $data['iyzico_local_code'])[0];
+        $localCode = $data['iyzico_local_code'];
         $currencyCode = $data['iyzico_currency_code'];
+        $threeds = $data['iyzico_threeds'];
 
         $request = new \Iyzipay\Request\CreatePaymentRequest();
         $request->setLocale($localCode);
@@ -77,13 +78,24 @@ final class IyzicoBridge implements IyzicoBridgeInterface
         $request->setBillingAddress($this->setBillingAddress($billingAddress));
         $request->setBasketItems($this->setBasketItems($basketItems));
 
-        $payment = \Iyzipay\Model\Payment::create($request, $this->client);
+        $payment = null;
 
-        return [
+        if ($threeds) {
+            $request->setCallbackUrl($data['iyzico_target_url']);
+            $payment = \Iyzipay\Model\ThreedsInitialize::create($request, $this->client);
+        } else {
+            $payment = \Iyzipay\Model\Payment::create($request, $this->client);
+        }
+
+        $result = [
             'status' => $payment->getStatus(),
             'error_code' => $payment->getErrorCode(),
-            'error_message' => $payment->getErrorMessage()
+            'error_message' => $payment->getErrorMessage(),
         ];
+        if ($threeds) {
+            $result['html_content'] = $payment->getHtmlContent();
+        }
+        return $result;
 
     }
 
@@ -108,8 +120,8 @@ final class IyzicoBridge implements IyzicoBridgeInterface
         $buyer->setGsmNumber($customer['phone_number']);
         $buyer->setEmail($customer['email']);
         $buyer->setIdentityNumber($customer['identity_number']);
-        $buyer->setLastLoginDate($customer['last_login_date'] ? $customer['last_login_date']->format('Y-m-d H:i:s') : null);
-        $buyer->setRegistrationDate($customer['registration_date']->format('Y-m-d H:i:s'));
+//        $buyer->setLastLoginDate($customer['last_login_date'] ? $customer['last_login_date']->format('Y-m-d H:i:s') : null);
+//        $buyer->setRegistrationDate($customer['registration_date']->format('Y-m-d H:i:s'));
         $buyer->setRegistrationAddress($customer['street']);
         $buyer->setIp($customer['ip']);
         $buyer->setCity($customer['city']);
@@ -163,6 +175,23 @@ final class IyzicoBridge implements IyzicoBridgeInterface
         return
             self::SANDBOX_ENVIRONMENT === $this->environment
                 ? self::SANDBOX_HOST : self::PRODUCTION_HOST;
+    }
+
+    public function createThreeds($data)
+    {
+        $request = new \Iyzipay\Request\CreateThreedsPaymentRequest();
+        $request->setLocale($data['iyzico_local_code']);
+        $request->setConversationId($data['conversationId']);
+        $request->setPaymentId($data['paymentId']);
+        $request->setConversationData($data['conversationData']);
+
+        $payment = \Iyzipay\Model\ThreedsPayment::create($request, $this->client);
+
+        return [
+            'status' => $payment->getStatus(),
+            'error_code' => $payment->getErrorCode(),
+            'error_message' => $payment->getErrorMessage(),
+        ];
     }
 
 }

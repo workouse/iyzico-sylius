@@ -31,7 +31,8 @@ class ConvertPaymentAction implements ActionInterface, GatewayAwareInterface
             'iyzico_currency_code' => $order->getCurrencyCode(),
             'iyzico_order_number' => $order->getNumber(),
             'iyzico_total' => $order->getTotal() / 100,
-            'iyzico_local_code' => $order->getLocaleCode(),
+            'iyzico_local_code' => explode("_", $order->getLocaleCode())[0],
+            'iyzico_target_url' => $request->getToken()->getTargetUrl(),
             'iyzico_shipping_address' => [
                 "firstname" => $order->getShippingAddress()->getFirstName(),
                 "lastname" => $order->getShippingAddress()->getLastName(),

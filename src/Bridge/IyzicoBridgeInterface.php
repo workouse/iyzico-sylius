@@ -23,6 +23,8 @@ interface IyzicoBridgeInterface
 
     public function create($data);
 
+    public function createThreeds($data);
+
     public function getHostForEnvironment(): string;
 
 }

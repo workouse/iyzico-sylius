@@ -66,10 +66,17 @@ final class IyzicoGatewayConfigurationType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('threeds', ChoiceType::class, [
+                'choices' => [
+                    'eres_sylius_iyzico_plugin.ui.disable' => false,
+                    'eres_sylius_iyzico_plugin.ui.active' => true,
+                ],
+                'label' => 'eres_sylius_iyzico_plugin.ui.threeds',
+            ])
             ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
                 if (!method_exists(Customer::class, 'getIdentityNumber')) {
+                    $this->flashBag->set('error', 'Iyzico payment plugin Installation failed');
                 }
-                $this->flashBag->set('error', 'Iyzico payment plugin Installation failed');
             });
     }
 }

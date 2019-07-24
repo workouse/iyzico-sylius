@@ -1,0 +1,10 @@
+eres_sylius_iyzico_plugin:
+  payment:
+    invalid_3d_secure_signature_or_verification: 3-D Secure imzası geçersiz veya doğrulama
+    card_holder_or_issuer_not_registered_to_3d_secure_network: Kart sahibi veya bankası sisteme kayıtlı değil
+    issuer_is_not_registered_to_3d_secure_network: Kartın bankası sisteme kayıtlı değil
+    verification_is_not_possible_card_holder_chosen_to_register_later_on_system: Doğrulama denemesi, kart sahibi sisteme daha sonra kayıt olmayı seçmiş
+    verification_is_not_possbile: Doğrulama yapılamıyor
+    3d_secure_error: 3-D Secure hatası
+    system_error: Sistem hatası
+    unknown_card: Bilinmeyen kart no
