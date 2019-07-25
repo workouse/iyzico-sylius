@@ -23,13 +23,18 @@ class IdentityNumberValidator extends ConstraintValidator
         $identityNumberCount = count($identityNumberArr);
         $identityNumberSum = null;
         $identityNumberCharacterType = false;
-        foreach ($identityNumberArr as $item) {
-            if (!is_numeric($item)) {
+
+        for ($i = 0; $i < $identityNumberCount; $i++) {
+            $identityNumber = $identityNumberArr[$i];
+            if (!is_numeric($identityNumber)) {
                 $identityNumberCharacterType = true;
                 break;
             }
-            $identityNumberSum += $item;
+            if ($i !== $identityNumberCount - 1) {
+                $identityNumberSum += $identityNumber;
+            }
         }
+
 
         if ($identityNumberCount !== 11 || $identityNumberCharacterType || str_split($identityNumberSum)[1] !== $identityNumberArr[$identityNumberCount - 1]) {
             $this->context->buildViolation($constraint->message)
