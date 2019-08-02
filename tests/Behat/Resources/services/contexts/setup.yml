@@ -1,0 +1,10 @@
+services:
+  eres_sylius_iyzico_plugin.context.setup.iyzico:
+    class: Tests\Eres\SyliusIyzicoPlugin\Behat\Context\Setup\IyzicoContext
+    public: true
+    arguments:
+      - "@sylius.behat.shared_storage"
+      - "@sylius.repository.payment_method"
+      - "@sylius.fixture.example_factory.payment_method"
+      - "@sylius.factory.payment_method_translation"
+      - "@sylius.manager.payment_method"

@@ -1,0 +1,16 @@
+services:
+  eres_sylius_iyzico_plugin.context.ui.admin.managing_payment_method_iyzico:
+    class: Tests\Eres\SyliusIyzicoPlugin\Behat\Context\Ui\Admin\ManagingPaymentMethodIyzicoContext
+    public: true
+    arguments:
+      - "@sylius.behat.current_page_resolver"
+      - "@eres_sylius_iyzico_plugin.page.admin.payment_method.create"
+
+  eres_sylius_iyzico_plugin.context.ui.shop.iyzico_checkout:
+    class: Tests\Eres\SyliusIyzicoPlugin\Behat\Context\Ui\Shop\IyzicoCheckoutContext
+    public: true
+    arguments:
+      - '@sylius.behat.page.shop.checkout.complete'
+      - '@eres_sylius_iyzico_plugin.mocker.iyzico_api'
+      - '@eres_sylius_iyzico_plugin.page.external.iyzico_checkout'
+      - '@sylius.behat.page.shop.order.show'

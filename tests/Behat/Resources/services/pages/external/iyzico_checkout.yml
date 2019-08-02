@@ -1,0 +1,13 @@
+services:
+  eres_sylius_iyzico_plugin.page.external.iyzico_checkout:
+    class: Tests\Eres\SyliusIyzicoPlugin\Behat\Page\External\IyzicoCheckoutPage
+    parent: "sylius.behat.page"
+    public: "false"
+    arguments:
+      - '@eres_sylius_iyzico_plugin.mocker.iyzico_api'
+      - '@sylius.repository.payment_security_token'
+      - '@test.client'
+  test.client.history:
+    class: Symfony\Component\BrowserKit\History
+  test.client.cookiejar:
+    class: Symfony\Component\BrowserKit\CookieJar

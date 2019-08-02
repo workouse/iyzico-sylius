@@ -1,0 +1,7 @@
+services:
+  eres_sylius_iyzico_plugin.page.admin.payment_method.create:
+    class: Tests\Eres\SyliusIyzicoPlugin\Behat\Page\Admin\PaymentMethod\CreatePage
+    parent: "sylius.behat.page.admin.crud.create"
+    public: false
+    arguments:
+      - "sylius_admin_payment_method_create"

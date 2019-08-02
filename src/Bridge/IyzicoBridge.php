@@ -120,8 +120,8 @@ final class IyzicoBridge implements IyzicoBridgeInterface
         $buyer->setGsmNumber($customer['phone_number']);
         $buyer->setEmail($customer['email']);
         $buyer->setIdentityNumber($customer['identity_number']);
-//        $buyer->setLastLoginDate($customer['last_login_date'] ? $customer['last_login_date']->format('Y-m-d H:i:s') : null);
-//        $buyer->setRegistrationDate($customer['registration_date']->format('Y-m-d H:i:s'));
+        $buyer->setLastLoginDate($customer['last_login_date'] ? $customer['last_login_date']->format('Y-m-d H:i:s') : null);
+        $buyer->setRegistrationDate($customer['registration_date']->format('Y-m-d H:i:s'));
         $buyer->setRegistrationAddress($customer['street']);
         $buyer->setIp($customer['ip']);
         $buyer->setCity($customer['city']);

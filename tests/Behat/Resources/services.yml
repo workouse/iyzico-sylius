@@ -1,0 +1,9 @@
+imports:
+  - { resource: "services/**/*.yml" }
+
+services:
+  eres_sylius_iyzico_plugin.mocker.iyzico_api:
+    class: Tests\Eres\SyliusIyzicoPlugin\Behat\Service\Mocker\IyzicoApiMocker
+    public: true
+    arguments:
+      - "@sylius.behat.mocker"
