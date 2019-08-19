@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Eres\SyliusIyzicoPlugin\Controller;
 
+use Eres\SyliusIyzicoPlugin\Event\PaymentEvent;
 use FOS\RestBundle\View\View;
 use Payum\Core\Payum;
 use Payum\Core\Request\Generic;
@@ -20,6 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class PayumController
 {
@@ -47,6 +49,9 @@ class PayumController
     /** @var ResolveNextRouteFactoryInterface */
     private $resolveNextRouteRequestFactory;
 
+    /** @var EventDispatcherInterface */
+    private $eventDispatcher;
+
     public function __construct(
         Payum $payum,
         OrderRepositoryInterface $orderRepository,
@@ -55,7 +60,8 @@ class PayumController
         ViewHandlerInterface $viewHandler,
         RouterInterface $router,
         GetStatusFactoryInterface $getStatusFactory,
-        ResolveNextRouteFactoryInterface $resolveNextRouteFactory
+        ResolveNextRouteFactoryInterface $resolveNextRouteFactory,
+        EventDispatcherInterface $eventDispatcher
     )
     {
         $this->payum = $payum;
@@ -66,6 +72,7 @@ class PayumController
         $this->router = $router;
         $this->getStatusRequestFactory = $getStatusFactory;
         $this->resolveNextRouteRequestFactory = $resolveNextRouteFactory;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     public function afterCaptureAction(Request $request): Response
@@ -98,6 +105,10 @@ class PayumController
             $flashBag->add('info', $flashBagMessage);
 
         }
+
+        $paymentEvent = new PaymentEvent();
+        $paymentEvent->setPayment($status->getFirstModel());
+        $this->eventDispatcher->dispatch('eres_sylius_iyzico_plugin.payment.post', $paymentEvent);
 
         return $this->viewHandler->handle(
             $configuration,

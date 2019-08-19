@@ -11,3 +11,4 @@ services:
       - "@router"
       - "@sylius.factory.payum_get_status_action"
       - "@sylius.factory.payum_resolve_next_route"
+      - "@event_dispatcher"
