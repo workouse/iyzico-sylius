@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Eres\SyliusIyzicoPlugin\Action;
 
 use Eres\SyliusIyzicoPlugin\Bridge\IyzicoBridgeInterface;
-use Payum\Core\Bridge\Symfony\Form\Type\CreditCardType;
+use Eres\SyliusIyzicoPlugin\Form\Type\CreditCardType;
 use Payum\Core\Exception\UnsupportedApiException;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\ApiAwareInterface;
