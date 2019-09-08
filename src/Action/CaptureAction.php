@@ -25,6 +25,17 @@ final class CaptureAction implements ActionInterface, GatewayAwareInterface, Api
 {
     use GatewayAwareTrait;
 
+    const ERRORS = [
+      -1 => "eres_sylius_iyzico_plugin.payment.invalid_3d_secure_signature_or_verification",
+      2=>"eres_sylius_iyzico_plugin.payment.card_holder_or_issuer_not_registered_to_3d_secure_network",
+      3=> "eres_sylius_iyzico_plugin.payment.issuer_is_not_registered_to_3d_secure_network",
+      4=>"eres_sylius_iyzico_plugin.payment.verification_is_not_possible_card_holder_chosen_to_register_later_on_system",
+      5=>"eres_sylius_iyzico_plugin.payment.verification_is_not_possbile",
+      6=>"eres_sylius_iyzico_plugin.payment.3d_secure_error",
+      7=>"eres_sylius_iyzico_plugin.payment.system_error",
+      8=>"eres_sylius_iyzico_plugin.payment.unknown_card"
+    ];
+
     /**
      * @var IyzicoBridgeInterface
      */
@@ -87,7 +98,7 @@ final class CaptureAction implements ActionInterface, GatewayAwareInterface, Api
                 $model['iyzico_error_message'] = $payment['error_message'];
             } else {
                 $model['iyzico_status'] = IyzicoBridgeInterface::FAILED_STATUS;
-                $model['iyzico_error_message'] = $this->getMdStatus($mdStatus);
+                $model['iyzico_error_message'] = isset(self::ERRORS[$mdStatus])?self::ERRORS[$mdStatus]:self::ERRORS[-1];
             }
 
             return;
@@ -141,28 +152,4 @@ final class CaptureAction implements ActionInterface, GatewayAwareInterface, Api
     {
         return $this->formFactory->create(CreditCardType::class);
     }
-
-    private function getMdStatus($mdStatus): string
-    {
-        $result = "eres_sylius_iyzico_plugin.payment.invalid_3d_secure_signature_or_verification";
-
-        if ($mdStatus == 2) {
-            $result = "eres_sylius_iyzico_plugin.payment.card_holder_or_issuer_not_registered_to_3d_secure_network";
-        } elseif ($mdStatus == 3) {
-            $result = "eres_sylius_iyzico_plugin.payment.issuer_is_not_registered_to_3d_secure_network";
-        } elseif ($mdStatus == 4) {
-            $result = "eres_sylius_iyzico_plugin.payment.verification_is_not_possible_card_holder_chosen_to_register_later_on_system";
-        } elseif ($mdStatus == 5) {
-            $result = "eres_sylius_iyzico_plugin.payment.verification_is_not_possbile";
-        } elseif ($mdStatus == 6) {
-            $result = "eres_sylius_iyzico_plugin.payment.3d_secure_error";
-        } elseif ($mdStatus == 7) {
-            $result = "eres_sylius_iyzico_plugin.payment.system_error";
-        } elseif ($mdStatus == 8) {
-            $result = "eres_sylius_iyzico_plugin.payment.unknown_card";
-        }
-
-        return $result;
-    }
-
 }
