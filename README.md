@@ -1,7 +1,10 @@
-<h1 align="center">Iyzico Payment Gateway Plugin</h1>
+# Iyzico Payment Gateway Plugin
+
+
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/workouse/iyzico-sylius/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/workouse/iyzico-sylius/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/workouse/iyzico-sylius/badges/build.png?b=master)](https://scrutinizer-ci.com/g/workouse/iyzico-sylius/build-status/master)
-<p align="center">Gateway plugin for sylius</p>
+
+Gateway plugin for sylius
 
 ## Installation
 
