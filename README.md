@@ -1,29 +1,12 @@
-<p align="center">
-    <a href="https://sylius.com" target="_blank">
-        <img src="https://demo.sylius.com/assets/shop/img/logo.png" />
-    </a>
-</p>
-
-<h1 align="center">Plugin Skeleton</h1>
-
-<p align="center">Skeleton for starting Sylius plugins.</p>
+<h1 align="center">Iyzico Payment Gateway Plugin</h1>
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/workouse/iyzico-sylius/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/workouse/iyzico-sylius/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/workouse/iyzico-sylius/badges/build.png?b=master)](https://scrutinizer-ci.com/g/workouse/iyzico-sylius/build-status/master)
+<p align="center">Gateway plugin for sylius</p>
 
 ## Installation
 
-1. Run `composer create-project sylius/plugin-skeleton ProjectName`.
-
-2. From the plugin skeleton root directory, run the following commands:
-
-    ```bash
-    $ (cd tests/Application && yarn install)
-    $ (cd tests/Application && yarn build)
-    $ (cd tests/Application && bin/console assets:install public -e test)
-    
-    $ (cd tests/Application && bin/console doctrine:database:create -e test)
-    $ (cd tests/Application && bin/console doctrine:schema:create -e test)
-    ```
-
-To be able to setup a plugin's database, remember to configure you database credentials in `tests/Application/.env` and `tests/Application/.env.test`.
+1. Run `composer require eresbiotech/iyzico-sylius`.
+2. -wip-
 
 ## Usage
 
