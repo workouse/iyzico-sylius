@@ -3,22 +3,22 @@
 
 namespace Eres\SyliusIyzicoPlugin\Event;
 
-use App\Entity\Payment\Payment;
+use Sylius\Component\Payment\Model\PaymentInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 class PaymentEvent extends Event
 {
     /**
-     * @var Payment
+     * @var PaymentInterface
      */
     private $payment;
 
-    public function getPayment(): ?Payment
+    public function getPayment(): ?PaymentInterface
     {
         return $this->payment;
     }
 
-    public function setPayment(Payment $payment)
+    public function setPayment(PaymentInterface $payment)
     {
         $this->payment = $payment;
     }
